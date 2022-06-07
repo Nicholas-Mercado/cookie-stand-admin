@@ -10,7 +10,7 @@ export default function Home() {
       </Head>
       <Header/>
       <main>
-        <StandInputForm/>
+        <StandInputForm onSubmit={cookieStandInputHandler}/>
         <Response/>
       </main>
       <Footer copyright="2022"/>
@@ -18,10 +18,10 @@ export default function Home() {
   )
 }
 
-function StandInputForm(){
+function StandInputForm(props){
   return (
     <div className="justify-center relative flex py-6">
-    <form className="flex-wrap w-1/2 p-2  bg-emerald-300 rounded-md" >
+    <form onSubmit={props.onSubmit} className="flex-wrap w-1/2 p-2  bg-emerald-300 rounded-md" >
       <h2 className="text-center font-semibold py-8 text-black-50 text-2xl" > Create Cookie Stand </h2>
       <div className='font-semibold flex py-2 pb-6'>
         <label className='pr-2'>Location</label>
@@ -71,4 +71,9 @@ function Footer({ copyright }) {
           <p>&copy;{copyright}</p>
       </footer>
   )
+}
+
+function cookieStandInputHandler(event){
+  event.preventDefault();
+  alert("something")
 }
