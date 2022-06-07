@@ -3,11 +3,19 @@ import { useState } from 'react';
 
 export default function Home() {
 
-  const [table, setQuestion] = useState("table test");
+  const [table, setCookieStand] = useState("");
 
   function cookieStandInputHandler(event){
+    var standData = {
+      location : event.target.location.value,
+      minCustomer : event.target.min.value,
+      maxCustomer : event.target.max.value,
+      avgCustomer : event.target.avg.value,
+    }
+    const standDataString = JSON.stringify(standData)
+
     event.preventDefault();
-    setQuestion(event.target.stand.value);
+    setCookieStand(standDataString);
     event.target.reset();
   }
   return (
@@ -32,20 +40,20 @@ function StandInputForm(props){
       <h2 className="text-center font-semibold py-8 text-black-50 text-2xl" > Create Cookie Stand </h2>
       <div className='font-semibold flex py-2 pb-6'>
         <label className='pr-2'>Location</label>
-        <input name="stand" className="flex-auto" />
+        <input name="location" className="flex-auto" />
       </div>
       <div className="flex justify-center relative">
         <div>
           <label className=''>Minimum Customers per Hour</label>
-          <input/>
+          <input name="min"/>
         </div>
         <div>
           <label>Maximum Customers per Hour</label>
-          <input/>
+          <input name="max"/>
         </div>
         <div>
           <label>Average Cookies per Sale</label>
-          <input/>
+          <input name="avg"/>
         </div>
         <button className=" px-4 py-3 bg-emerald-600 text-black-50">Create</button>
       </div>
@@ -59,7 +67,7 @@ function Response(props){
   return (
     <div>
       <h3 className="justify-center relative flex py-6">
-        Report Table Comning Soon...
+        Report Table Coming Soon...
       </h3>
       <p className="flex justify-center" > {props.table}</p>
     </div>
