@@ -1,8 +1,15 @@
 import Head from 'next/head'
-// import Image from 'next/image'
-// import styles from '../styles/Home.module.css'
+import { useState } from 'react'; 
 
 export default function Home() {
+
+  const [table, setQuestion] = useState("table test");
+
+  function cookieStandInputHandler(event){
+    event.preventDefault();
+    setQuestion(event.target.stand.value);
+    event.target.reset();
+  }
   return (
     <div>
       <Head>
@@ -11,7 +18,7 @@ export default function Home() {
       <Header/>
       <main>
         <StandInputForm onSubmit={cookieStandInputHandler}/>
-        <Response/>
+        <Response table={table}/>
       </main>
       <Footer copyright="2022"/>
     </div>
@@ -25,7 +32,7 @@ function StandInputForm(props){
       <h2 className="text-center font-semibold py-8 text-black-50 text-2xl" > Create Cookie Stand </h2>
       <div className='font-semibold flex py-2 pb-6'>
         <label className='pr-2'>Location</label>
-        <input className="flex-auto" />
+        <input name="stand" className="flex-auto" />
       </div>
       <div className="flex justify-center relative">
         <div>
@@ -48,12 +55,13 @@ function StandInputForm(props){
 
 }
 
-function Response(){
+function Response(props){
   return (
     <div>
       <h3 className="justify-center relative flex py-6">
         Report Table Comning Soon...
       </h3>
+      <p className="flex justify-center" > {props.table}</p>
     </div>
   )
   
@@ -73,7 +81,4 @@ function Footer({ copyright }) {
   )
 }
 
-function cookieStandInputHandler(event){
-  event.preventDefault();
-  alert("something")
-}
+
