@@ -23,7 +23,7 @@ export default function Home() {
         <StandInputForm inputHandler={cookieStandInputHandler}/>
         <CookieStandTable table={table}/>
       </main>
-      <Footer copyright="2022"/>
+      <Footer copyright="2022" table={table}/>
     </div>
   )
 }
