@@ -1,4 +1,4 @@
-export default function Header({ count }) {
+export default function Header() {
 
 
 return (<header className="px-8 py-6 text-4xl font-semibold text-gray-800 bg-emerald-500">
