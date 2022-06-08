@@ -7,20 +7,11 @@ import CookieStandTable from '../components/CookieStandTable'
 
 export default function Home() {
 
-  const [table, setCookieStand] = useState("");
+  const [table, setCookieStand] = useState([]);
 
-  function cookieStandInputHandler(event){
-    var standData = {
-      location : event.target.location.value,
-      minCustomer : event.target.min.value,
-      maxCustomer : event.target.max.value,
-      avgCustomer : event.target.avg.value,
-    }
-    const standDataString = JSON.stringify(standData)
+  function cookieStandInputHandler(data){
 
-    event.preventDefault();
-    setCookieStand(standDataString);
-    event.target.reset();
+    setCookieStand([...table, data]);
   }
   return (
     <div>
@@ -29,7 +20,7 @@ export default function Home() {
       </Head>
       <Header/>
       <main>
-        <StandInputForm onSubmit={cookieStandInputHandler}/>
+        <StandInputForm inputHandler={cookieStandInputHandler}/>
         <CookieStandTable table={table}/>
       </main>
       <Footer copyright="2022"/>
