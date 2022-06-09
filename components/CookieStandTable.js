@@ -3,8 +3,27 @@ import { hours } from '../data';
 
 export default function CookieStandTable({ table }) {
 
-
-
+function totalHourly(table){
+  let hourlyTotal = []
+  for (let i = 0; i < hours.length; i++){
+    let hours = 0;
+    table.map(item => {
+      hours += item.hourly_sales[i]
+    })
+    hourlyTotal[i] = hours
+  }
+  
+  return (hourlyTotal)
+  }
+  
+function totalFinal(arr){
+  let total = 0
+  for (let i = 0; i < arr.length; i++){
+    total += arr[i]
+  }
+  return total
+}
+let grandTotal = totalFinal(totalHourly(table))
   if (table.length == 0) {
 
     return (
@@ -30,9 +49,21 @@ export default function CookieStandTable({ table }) {
           {table.map((item, idx) => (
             <tr key={idx}>
               <td className="p-2 border border-black">{item.location}</td>
+              {item.hourly_sales.map((int, idx) => (
+              <td key={idx} className="p-2 border border-black">{int}</td>
+              ))}
+              <td className="p-2 border border-black" >{item.total}</td>
             </tr>
           ))}
+          
         </tbody>
+        <tfoot>
+            <th className="p-2 border border-black">Totals</th>
+            {totalHourly(table).map((item, idx) => (
+              <th key={idx} className="p-2 border border-black">{item}</th>
+              ))}
+              <th className="p-2 border border-black">{grandTotal}</th>
+        </tfoot>
       </table>
     );
   }

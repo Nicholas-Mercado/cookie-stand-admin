@@ -1,21 +1,34 @@
-export default function StandInputForm(props){
+import { hourly_sales } from '../data';
+export default function StandInputForm(props) {
 
-  function handleSubmit(event){
-    
+  function totalDay(arr) {
+    let total = 0
+    arr.forEach(
+      num => total += num
+    )
+    return total
+  }
+
+  function handleSubmit(event) {
+
     event.preventDefault();
-     var standData = {
+    var standData = {
       id: location.length + 1,
-      location : event.target.location.value,
-      minCustomer : event.target.min.value,
-      maxCustomer : event.target.max.value,
-      avgCustomer : event.target.avg.value,
+      hourly_sales: hourly_sales,
+      location: event.target.location.value,
+      minCustomer: event.target.min.value,
+      maxCustomer: event.target.max.value,
+      avgCustomer: event.target.avg.value,
+
     }
-    
+    const totalDaySales = totalDay(standData.hourly_sales)
+    standData.total = totalDaySales
     props.inputHandler(standData)
     event.target.reset();
   }
-    return (
-      <div className="relative flex justify-center py-6">
+
+  return (
+    <div className="relative flex justify-center py-6">
       <form onSubmit={handleSubmit} className="flex-wrap w-1/2 p-2 rounded-md bg-emerald-300" >
         <h2 className="py-8 text-2xl font-semibold text-center text-black-50" > Create Cookie Stand </h2>
         <div className='flex py-2 pb-6 font-semibold'>
@@ -25,20 +38,20 @@ export default function StandInputForm(props){
         <div className="relative flex justify-center">
           <div>
             <label className=''>Minimum Customers per Hour</label>
-            <input name="min"/>
+            <input name="min" />
           </div>
           <div>
             <label>Maximum Customers per Hour</label>
-            <input name="max"/>
+            <input name="max" />
           </div>
           <div>
             <label>Average Cookies per Sale</label>
-            <input name="avg"/>
+            <input name="avg" />
           </div>
           <button className="px-4 py-3 bg-emerald-600 text-black-50">Create</button>
         </div>
       </form>
-      </div>
-    )
-  
-  }
+    </div>
+  )
+
+}
