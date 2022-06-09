@@ -28,27 +28,27 @@ export default function StandInputForm(props) {
   }
 
   return (
-    <div className="relative flex justify-center py-6">
+    <div className="flex justify-center py-6">
       <form onSubmit={handleSubmit} className="flex-wrap w-1/2 p-2 rounded-md bg-emerald-300" >
         <h2 className="py-8 text-2xl font-semibold text-center text-black-50" > Create Cookie Stand </h2>
         <div className='flex py-2 pb-6 font-semibold'>
           <label className='pr-2'>Location</label>
           <input name="location" className="flex-auto" />
         </div>
-        <div className="relative flex justify-center">
-          <div>
-            <label className=''>Minimum Customers per Hour</label>
+        <div className="flex w-full mb-3 ">
+          <div className='w-full p-4 px-3 m-4 mb-6 text-center rounded-md md:w-1/4 md:mb-0 bg-emerald-200' >
+            <label block text-center tracking-wide text-gray-700 text-sm font-bold mb-2 >Minimum Customers per Hour</label>
             <input name="min" />
           </div>
-          <div>
+          <div className='w-full p-4 px-3 m-4 mb-6 text-center rounded-md md:w-1/4 md:mb-0 bg-emerald-200'  >
             <label>Maximum Customers per Hour</label>
             <input name="max" />
           </div>
-          <div>
+          <div className='w-full p-4 px-3 m-4 mb-6 text-center rounded-md md:w-1/4 md:mb-0 bg-emerald-200 '>
             <label>Average Cookies per Sale</label>
             <input name="avg" />
           </div>
-          <button className="px-4 py-3 bg-emerald-600 text-black-50">Create</button>
+          <button className='w-full p-4 px-3 m-4 mb-6 text-center rounded-md md:w-1/4 md:mb-0 bg-emerald-600 '>Create</button>
         </div>
       </form>
     </div>
