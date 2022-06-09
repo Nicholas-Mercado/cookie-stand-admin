@@ -37,15 +37,15 @@ export default function StandInputForm(props) {
         </div>
         <div className="flex w-full mb-3 ">
           <div className='w-full p-4 px-3 m-4 mb-6 text-center rounded-md md:w-1/4 md:mb-0 bg-emerald-200' >
-            <label block text-center tracking-wide text-gray-700 text-sm font-bold mb-2 >Minimum Customers per Hour</label>
+            <label className='block mb-2 text-sm font-bold tracking-wide text-center text-gray-700 ' >Minimum Customers per Hour</label>
             <input name="min" />
           </div>
           <div className='w-full p-4 px-3 m-4 mb-6 text-center rounded-md md:w-1/4 md:mb-0 bg-emerald-200'  >
-            <label>Maximum Customers per Hour</label>
+            <label className='block mb-2 text-sm font-bold tracking-wide text-center text-gray-700 '>Maximum Customers per Hour</label>
             <input name="max" />
           </div>
           <div className='w-full p-4 px-3 m-4 mb-6 text-center rounded-md md:w-1/4 md:mb-0 bg-emerald-200 '>
-            <label>Average Cookies per Sale</label>
+            <label className='block mb-2 text-sm font-bold tracking-wide text-center text-gray-700 '>Average Cookies per Sale</label>
             <input name="avg" />
           </div>
           <button className='w-full p-4 px-3 m-4 mb-6 text-center rounded-md md:w-1/4 md:mb-0 bg-emerald-600 '>Create</button>
