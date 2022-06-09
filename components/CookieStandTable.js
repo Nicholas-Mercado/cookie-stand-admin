@@ -38,31 +38,31 @@ let grandTotal = totalFinal(totalHourly(table))
       <table className="w-1/2 mx-auto my-4 border">
         <thead>
           <tr>
-            <th className="p-2 border border-black">Location</th>
+            <th className="p-2 border border-black bg-emerald-600">Location</th>
             {hours.map(item => (
-              <th key={item} className="p-2 border border-black">{item}</th>
+              <th key={item} className="p-2 border border-black bg-emerald-600">{item}</th>
             ))}
-            <th className="p-2 border border-black">Total</th>
+            <th className="p-2 border border-black bg-emerald-600">Total</th>
           </tr>
         </thead>
         <tbody>
           {table.map((item, idx) => (
             <tr key={idx}>
-              <td className="p-2 border border-black">{item.location}</td>
+              <td className="p-2 border border-black even:bg-emerald-300 odd:bg-emerald-400 ">{item.location}</td>
               {item.hourly_sales.map((int, idx) => (
-              <td key={idx} className="p-2 border border-black">{int}</td>
+              <td key={idx} className="p-2 border border-black even:bg-emerald-300 odd:bg-emerald-400 ">{int}</td>
               ))}
-              <td className="p-2 border border-black" >{item.total}</td>
+              <td className="p-2 border border-black even:bg-emerald-300 odd:bg-emerald-400" >{item.total}</td>
             </tr>
           ))}
           
         </tbody>
         <tfoot>
-            <th className="p-2 border border-black">Totals</th>
+            <th className="p-2 font-bold border border-black bg-emerald-600">Totals</th>
             {totalHourly(table).map((item, idx) => (
-              <th key={idx} className="p-2 border border-black">{item}</th>
+              <th key={idx} className="p-2 border border-black bg-emerald-600">{item}</th>
               ))}
-              <th className="p-2 border border-black">{grandTotal}</th>
+              <th className="p-2 border border-black bg-emerald-600">{grandTotal}</th>
         </tfoot>
       </table>
     );
