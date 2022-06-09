@@ -4,8 +4,13 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import StandInputForm from '../components/StandInputForm'
 import CookieStandTable from '../components/CookieStandTable'
+import LoginForm from '../components/LoginForm';
+import { useAuth } from '../contexts/auth';
 
 export default function Home() {
+
+
+  const { user, login } = useAuth();
 
   const [table, setCookieStand] = useState([]);
 
@@ -20,8 +25,11 @@ export default function Home() {
       </Head>
       <Header/>
       <main>
-        <StandInputForm inputHandler={cookieStandInputHandler}/>
-        <CookieStandTable table={table}/>
+      {user ?
+        <><StandInputForm inputHandler={cookieStandInputHandler} /><CookieStandTable table={table} /></>
+        :
+        <LoginForm onLogin={login} />
+            }
       </main>
       <Footer copyright="2022" table={table}/>
     </div>

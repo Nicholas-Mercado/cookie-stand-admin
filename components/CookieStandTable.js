@@ -37,7 +37,7 @@ let grandTotal = totalFinal(totalHourly(table))
     return (
       <table className="w-1/2 mx-auto my-4 border">
         <thead>
-          <tr>
+          <tr className="even:bg-emerald-300 odd:bg-emerald-400 ">
             <th className="p-2 border border-black bg-emerald-600">Location</th>
             {hours.map(item => (
               <th key={item} className="p-2 border border-black bg-emerald-600">{item}</th>
@@ -47,8 +47,8 @@ let grandTotal = totalFinal(totalHourly(table))
         </thead>
         <tbody>
           {table.map((item, idx) => (
-            <tr key={idx}>
-              <td className="p-2 border border-black even:bg-emerald-300 odd:bg-emerald-400 ">{item.location}</td>
+            <tr key={idx} className="even:bg-emerald-300 odd:bg-emerald-400 ">
+              <td className="p-2 border border-black ">{item.location}</td>
               {item.hourly_sales.map((int, idx) => (
               <td key={idx} className="p-2 border border-black even:bg-emerald-300 odd:bg-emerald-400 ">{int}</td>
               ))}
