@@ -6,10 +6,11 @@ import StandInputForm from '../components/StandInputForm'
 import CookieStandTable from '../components/CookieStandTable'
 import LoginForm from '../components/LoginForm';
 import { useAuth } from '../contexts/auth';
+import useResource from '../hooks/useResource';
 
 export default function Home() {
 
-
+  const { resources } = useResource();
   const { user, login } = useAuth();
 
   const [table, setCookieStand] = useState([]);
@@ -26,7 +27,7 @@ export default function Home() {
       <Header/>
       <main>
       {user ?
-        <><StandInputForm inputHandler={cookieStandInputHandler} /><CookieStandTable table={table} /></>
+        <><StandInputForm inputHandler={cookieStandInputHandler} /><CookieStandTable table={resources || []} /></>
         :
         <LoginForm onLogin={login} />
             }

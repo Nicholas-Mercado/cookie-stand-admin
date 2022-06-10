@@ -15,6 +15,13 @@ function totalHourly(table){
   
   return (hourlyTotal)
   }
+  function totalDay(arr) {
+    let total = 0
+    arr.forEach(
+      num => total += num
+    )
+    return total
+  }
   
 function totalFinal(arr){
   let total = 0
@@ -45,6 +52,8 @@ let grandTotal = totalFinal(totalHourly(table))
             <th className="p-2 border border-black bg-emerald-600">Total</th>
           </tr>
         </thead>
+
+		
         <tbody>
           {table.map((item, idx) => (
             <tr key={idx} className="even:bg-emerald-300 odd:bg-emerald-400 ">
@@ -61,7 +70,9 @@ let grandTotal = totalFinal(totalHourly(table))
             <th className="p-2 font-bold border border-black bg-emerald-600">Totals</th>
             {totalHourly(table).map((item, idx) => (
               <th key={idx} className="p-2 border border-black bg-emerald-600">{item}</th>
+			  
               ))}
+			
               <th className="p-2 border border-black bg-emerald-600">{grandTotal}</th>
         </tfoot>
       </table>
