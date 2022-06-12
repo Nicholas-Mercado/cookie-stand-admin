@@ -67,6 +67,7 @@ let grandTotal = totalFinal(totalHourly(table))
           
         </tbody>
         <tfoot>
+        <tr>
             <th className="p-2 font-bold border border-black bg-emerald-600">Totals</th>
             {totalHourly(table).map((item, idx) => (
               <th key={idx} className="p-2 border border-black bg-emerald-600">{item}</th>
@@ -74,6 +75,8 @@ let grandTotal = totalFinal(totalHourly(table))
               ))}
 			
               <th className="p-2 border border-black bg-emerald-600">{grandTotal}</th>
+          
+        </tr>
         </tfoot>
       </table>
     );
