@@ -17,7 +17,7 @@ export default function Home() {
 
   function cookieStandInputHandler(data){
 
-    setCookieStand([...table, data]);
+    setCookieStand([...resources, data]);
   }
   return (
     <div>
@@ -32,7 +32,7 @@ export default function Home() {
         <LoginForm onLogin={login} />
             }
       </main>
-      <Footer copyright="2022" table={table}/>
+      <Footer copyright="2022" resources={resources}/>
     </div>
   )
 }
