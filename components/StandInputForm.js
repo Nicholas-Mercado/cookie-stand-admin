@@ -1,28 +1,28 @@
-import { hourly_sales } from '../data';
-export default function StandInputForm(props) {
+import { useAuth } from '../contexts/auth';
+import useResource from '../hooks/useResource';
 
-  function totalDay(arr) {
-    let total = 0
-    arr.forEach(
-      num => total += num
-    )
-    return total
-  }
+
+export default function StandInputForm(props) {
+  const { user } = useAuth();
+  const { createResource } = useResource();
+  
+
 
   function handleSubmit(event) {
 
+    
+
     event.preventDefault();
     var standData = {
-      id: location.length + 1,
-      hourly_sales: hourly_sales,
       location: event.target.location.value,
-      minCustomer: event.target.min.value,
-      maxCustomer: event.target.max.value,
-      avgCustomer: event.target.avg.value,
-
-    }
-    const totalDaySales = totalDay(standData.hourly_sales)
-    standData.total = totalDaySales
+      minimum_customers_per_hour: parseInt(event.target.minimum.value),
+      maximum_customers_per_hour: parseInt(event.target.maximum.value),
+      average_cookies_per_sale: parseFloat(event.target.average.value),
+      owner: user.id,
+    };
+    createResource(standData);
+    // const totalDaySales = totalDay(standData.hourly_sales)
+    // standData.total = totalDaySales
     props.inputHandler(standData)
     event.target.reset();
   }
@@ -37,16 +37,16 @@ export default function StandInputForm(props) {
         </div>
         <div className="flex w-full mb-3 ">
           <div className='w-full p-4 px-3 m-4 mb-6 text-center rounded-md md:w-1/4 md:mb-0 bg-emerald-200' >
-            <label block text-center tracking-wide text-gray-700 text-sm font-bold mb-2 >Minimum Customers per Hour</label>
-            <input name="min" />
+            <label className='block mb-2 text-sm font-bold tracking-wide text-center text-gray-700 ' >Minimum Customers per Hour</label>
+            <input name="minimum" />
           </div>
           <div className='w-full p-4 px-3 m-4 mb-6 text-center rounded-md md:w-1/4 md:mb-0 bg-emerald-200'  >
-            <label>Maximum Customers per Hour</label>
-            <input name="max" />
+            <label className='block mb-2 text-sm font-bold tracking-wide text-center text-gray-700 '>Maximum Customers per Hour</label>
+            <input name="maximum" />
           </div>
           <div className='w-full p-4 px-3 m-4 mb-6 text-center rounded-md md:w-1/4 md:mb-0 bg-emerald-200 '>
-            <label>Average Cookies per Sale</label>
-            <input name="avg" />
+            <label className='block mb-2 text-sm font-bold tracking-wide text-center text-gray-700 '>Average Cookies per Sale</label>
+            <input name="average" />
           </div>
           <button className='w-full p-4 px-3 m-4 mb-6 text-center rounded-md md:w-1/4 md:mb-0 bg-emerald-600 '>Create</button>
         </div>
