@@ -24,7 +24,7 @@ export default function Home() {
       <Head>
         <title>Cookie Stand</title>
       </Head>
-      <Header/>
+      <Header user={user} />
       <main>
       {user ?
         <><StandInputForm inputHandler={cookieStandInputHandler} /><CookieStandTable table={resources || []} /></>
