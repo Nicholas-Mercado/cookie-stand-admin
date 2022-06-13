@@ -10,9 +10,8 @@ import useResource from '../hooks/useResource';
 
 export default function Home() {
 
-  const { resources } = useResource();
   const { user, login } = useAuth();
-
+  const { resources, deleteResource } = useResource();
   const [table, setCookieStand] = useState([]);
 
   function cookieStandInputHandler(data){
@@ -27,7 +26,7 @@ export default function Home() {
       <Header user={user} />
       <main>
       {user ?
-        <><StandInputForm inputHandler={cookieStandInputHandler} /><CookieStandTable table={resources || []} /></>
+        <><StandInputForm inputHandler={cookieStandInputHandler} /><CookieStandTable table={resources || []} deleteStand={deleteResource} /></>
         :
         <LoginForm onLogin={login} />
             }

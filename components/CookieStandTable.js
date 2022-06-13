@@ -1,7 +1,8 @@
 import { hours } from '../data';
 
 
-export default function CookieStandTable({ table }) {
+export default function CookieStandTable({ table , deleteStand }) {
+  console.log(table)
 
 function totalHourly(table){
   let hourlyTotal = []
@@ -38,17 +39,19 @@ let grandTotal = totalFinal(totalHourly(table))
         No Cookie Stands Available
       </h2>
     );
-
   } else {
 
     return (
       <table className="w-1/2 mx-auto my-4 border">
         <thead>
+        
           <tr className="even:bg-emerald-300 odd:bg-emerald-400 ">
             <th className="p-2 border border-black bg-emerald-600">Location</th>
             {hours.map(item => (
               <th key={item} className="p-2 border border-black bg-emerald-600">{item}</th>
+              
             ))}
+            
             <th className="p-2 border border-black bg-emerald-600">Total</th>
           </tr>
         </thead>
@@ -57,7 +60,9 @@ let grandTotal = totalFinal(totalHourly(table))
         <tbody>
           {table.map((item, idx) => (
             <tr key={idx} className="even:bg-emerald-300 odd:bg-emerald-400 ">
-              <td className="p-2 border border-black ">{item.location}</td>
+              <td className="p-2 border border-black ">{item.location} {' '}
+              <DeleteButton deleteResource={deleteStand} id={item.id}
+            /></td>
               {item.hourly_sales.map((int, idx) => (
               <td key={idx} className="p-2 border border-black even:bg-emerald-300 odd:bg-emerald-400 ">{int}</td>
               ))}
@@ -83,3 +88,13 @@ let grandTotal = totalFinal(totalHourly(table))
   }
 }
 
+function DeleteButton({ table, deleteStand }) {
+
+  function clickHandler() {
+      deleteStand(table.id);
+  }
+
+  return(
+    <button onClick={clickHandler}>X</button>
+  )
+}
