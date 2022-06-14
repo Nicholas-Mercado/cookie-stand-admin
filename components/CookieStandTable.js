@@ -1,8 +1,8 @@
 import { hours } from '../data';
 
+export default function CookieStandTable({ table , deleteStand, props}) {
+  console.log("Table: ",table)
 
-export default function CookieStandTable({ table , deleteStand }) {
-  console.log(table)
 
 function totalHourly(table){
   let hourlyTotal = []
@@ -61,7 +61,7 @@ let grandTotal = totalFinal(totalHourly(table))
           {table.map((item, idx) => (
             <tr key={idx} className="even:bg-emerald-300 odd:bg-emerald-400 ">
               <td className="p-2 border border-black ">{item.location} {' '}
-              <DeleteButton deleteResource={deleteStand} id={item.id}
+              <DeleteButton deleteStand={deleteStand} id={item.id}
             /></td>
               {item.hourly_sales.map((int, idx) => (
               <td key={idx} className="p-2 border border-black even:bg-emerald-300 odd:bg-emerald-400 ">{int}</td>
@@ -88,13 +88,17 @@ let grandTotal = totalFinal(totalHourly(table))
   }
 }
 
-function DeleteButton({ table, deleteStand }) {
+function DeleteButton(props) {
 
   function clickHandler() {
-      deleteStand(table.id);
+      props.deleteStand(props.id);
   }
 
   return(
-    <button onClick={clickHandler}>X</button>
+    <button onClick={clickHandler}>
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+        </svg>
+    </button>
   )
 }
