@@ -1,7 +1,6 @@
 import { hours } from '../data';
 
 export default function CookieStandTable({ table , deleteStand, props}) {
-  console.log("Table: ",table)
 
 
 function totalHourly(table){
