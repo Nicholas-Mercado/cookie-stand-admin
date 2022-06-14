@@ -3,6 +3,7 @@ import { useAuth } from "../contexts/auth";
 
 export default function Header(props) {
 const { user, logout } = useAuth();
+console.log(user)
 if (props.user) {
 return (
         
